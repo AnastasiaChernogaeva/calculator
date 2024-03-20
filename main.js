@@ -1,33 +1,119 @@
 let display = document.querySelector(".display");
-
 let buttons = Array.from(document.querySelectorAll(".button"));
 
+let firstNum = '';
+let secNum = '';
+let sign = '';
+let done = false;
+
+const numButtons = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
+const actions = ['-', '+', '*', '/'];
+
+const clearAll = () => {
+    firstNum = '';
+    secNum = '';
+    sign = '';
+    done = false;
+    display.innerText = '0'; 
+}
+
 buttons.map((button) => {
-  button.addEventListener("click", (e) => {
-    switch (e.target.innerText) {
-      case "AC":
-        display.innerText = "0";
-        break;
-      case "=":
-        try {
-          display.innerText = eval(display.innerText);
-        } catch (e) {
-          display.innerText = "Error!";
+  button.addEventListener("click", (e) => {    
+    display.innerText = '';
+    const key = e.target.innerText;
+
+    if (key == "AC")  clearAll();
+
+    if (numButtons.includes(key)){
+        if (secNum === '' && sign === '') {
+            firstNum += key;
+            display.innerText = firstNum;
+        }else {
+            secNum += key;
+            done = false;
+            display.innerText = secNum;
         }
-        break;
-      case "+/-":
-        display.innerText = "-";
-        break;
-      case "%":
-        let passedText = display.innerText + "/100";
-        display.innerText = eval(passedText);
-        break;
-      default:
-        if (display.innerText === "0" && e.target.innerText !== ".") {
-          display.innerText = e.target.innerText;
-        } else {
-          display.innerText += e.target.innerText;
-        }
+        return;
     }
+
+    if (actions.includes(key)) {
+        sign = key;
+        display.innerText = sign;
+        return;
+    }
+    
+    if (key === '%') {        
+        display.innerText = secNum + '%';
+        secNum = (firstNum*secNum*0.01);
+    }
+
+
+    if (key === '=') {
+        if (secNum === '') secNum = firstNum;
+        switch (sign) {
+            case '+':
+                firstNum = (+firstNum) + (+secNum);
+                break;
+            case '-':
+                firstNum = firstNum - secNum;
+                break;
+            case '*':
+                firstNum = firstNum * secNum;
+                break;
+            case '/':
+                if (secNum == 0) {
+                    firstNum = 'Error...';
+                    secNum = '';
+                    sign = '';
+                    done = false;
+                } else {
+                    firstNum = firstNum / secNum;
+                }
+                break;
+        }
+        done = true;
+        secNum = '';
+        sign = '';
+        display.innerText = firstNum;
+    }
+
+    if (key === '+/-') { 
+        const str = firstNum.toString();
+        if (str.includes('-')) {
+            firstNum = str.replace('-', '');
+        } else {
+            firstNum = str.replace('', '-');
+        }
+        display.innerText = firstNum;
+    }
+
   });
 });
+
+
+let prevTheme = '';
+
+let themeToggler = document.querySelector(".toggle");
+themeToggler.addEventListener("click", () => {
+    applyTheme();
+});
+
+const applyTheme = () => {
+    let themeUrl 
+    switch (prevTheme) {
+        case 'dark':
+            prevTheme = 'light';
+            themeUrl = `css/theme-${prevTheme}.css`;
+            break;
+        case 'light':
+            prevTheme = 'dark';
+            themeUrl = `css/theme-${prevTheme}.css`;
+            break;
+        default: 
+            prevTheme = 'dark';
+            themeUrl = `css/theme-${prevTheme}.css`;
+            break;
+    }
+    document.querySelector('[title="theme"]').setAttribute('href', themeUrl);
+};
+
