@@ -1,3 +1,9 @@
+require('./css/style.css');
+require('./css/theme-dark.css');
+require('./css/theme-light.css');
+
+
+
 let display = document.querySelector(".display");
 let buttons = Array.from(document.querySelectorAll(".button"));
 
