@@ -5,23 +5,20 @@
   }
   
   body {
+    background: linear-gradient(to left, #ad9997, #a0abca);
     font-size: 12px;
     font-family: Arial, Helvetica, sans-serif;
   }
   
   .calculator {
     width: 470px;
-    height: auto; 
-    background-color: rgb(45, 44, 44);
+    height: auto;
     margin: 150px auto;
     border-radius: 20px;
     padding: 0px;
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-      rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   }
   
   .display {
-    color: white;
     font-size: 70px;
     text-align: end;
     padding-top: 20px;
@@ -36,25 +33,15 @@
   
   .button {
     border: none;
-    color: white;
     padding: 28px 30px;
     width: 24.1%;
     margin: 2px 2px;
     font-size: 30px;
-    background-color: grey;
   }
   
   .zero-btn {
     padding: 30px 211px 26px 20px;
     border-bottom-left-radius: 20px;
-  }
-  
-  .btn-orange {
-    background-color: orange;
-  }
-  
-  .btn-grey {
-    background-color: rgba(132, 126, 126, 0.372);
   }
 
   .last-btn {
@@ -81,4 +68,123 @@
     border-radius: 50%;
   }
 
+
+  /* ?darkMode */
+  .theme-dark {
+    #body {
+      background: linear-gradient(to left, #ad9997, #a0abca);
+    }
   
+    .calculator {
+      background-color: rgb(45, 44, 44);
+      box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+        rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    }
+    
+    .display {
+      color: white;
+    }
+    
+    .button {
+      border: none;
+      color: white;
+      background-color: grey;
+    }
+  
+    .btn-orange {
+      background-color: orange;
+    }
+    
+    .btn-grey {
+      background-color: rgba(132, 126, 126, 0.372);
+    }
+  
+    .toggle:hover div{
+      background-color: orange;
+    }
+  
+    .toggle div{
+      background-color: aliceblue;
+    }   
+  }
+
+
+  /* .body_dark {
+    background: linear-gradient(to left, #ad9997, #a0abca);
+  }
+
+  .calculator_dark {
+    background-color: rgb(45, 44, 44);
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+      rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  }
+  
+  .display_dark {
+    color: white;
+  }
+  
+  .button_daek {
+    border: none;
+    color: white;
+    background-color: grey;
+  }
+
+  .btn-orange {
+    background-color: orange;
+  }
+  
+  .btn-grey {
+    background-color: rgba(132, 126, 126, 0.372);
+  }
+
+  .toggle:hover div{
+    background-color: orange;
+  }
+
+  .toggle div{
+    background-color: aliceblue;
+  } */
+
+    /* ?lightMode */
+    .theme-light {
+        
+  #body {
+    background:rgba(181, 214, 234, 0.601);
+  }
+
+  .calculator {
+    background-color:rgba(255, 236, 245, 0.99);
+    box-shadow: rgba(29, 74, 93, 0.12) 0px 2px 4px 0px,
+      rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  }
+  
+  .display {
+    color: black;
+  }
+  
+  .button {
+    border: none;
+    color: black;
+    background-color: rgb(196, 186, 186);
+  }
+
+  .btn-orange {
+    background-color: rgb(226, 97, 157);
+  }
+  
+  .btn-grey {
+    background-color: rgba(204, 199, 199, 0.618);
+  }
+
+  .toggle:hover div{
+    background-color: rgb(226, 97, 157);
+    border: 5px;
+    border-color: black;
+  }
+
+  .toggle div{
+    background-color: black;
+  }
+
+  
+    }

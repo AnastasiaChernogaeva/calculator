@@ -1,8 +1,3 @@
-require('./css/style.css');
-require('./css/theme-dark.css');
-require('./css/theme-light.css');
-
-
 
 let display = document.querySelector(".display");
 let buttons = Array.from(document.querySelectorAll(".button"));
@@ -93,28 +88,29 @@ buttons.map((button) => {
 
 
 let prevTheme = '';
-
 let themeToggler = document.querySelector(".toggle");
 themeToggler.addEventListener("click", () => {
     applyTheme();
 });
 
 const applyTheme = () => {
-    let themeUrl 
     switch (prevTheme) {
-        case 'dark':
+        case 'dark': 
+            document.getElementById('body').classList.remove(`theme-${prevTheme}`);
             prevTheme = 'light';
-            themeUrl = `css/theme-${prevTheme}.css`;
+            document.getElementById('body').classList.add(`theme-${prevTheme}`);
             break;
         case 'light':
+            document.getElementById('body').classList.remove(`theme-${prevTheme}`);
             prevTheme = 'dark';
-            themeUrl = `css/theme-${prevTheme}.css`;
+            document.getElementById('body').classList.add(`theme-${prevTheme}`);
             break;
-        default: 
+        default:            
             prevTheme = 'dark';
-            themeUrl = `css/theme-${prevTheme}.css`;
+            document.getElementById('body').classList.add(`theme-${prevTheme}`);
             break;
     }
-    document.querySelector('[title="theme"]').setAttribute('href', themeUrl);
 };
 
+document.getElementById('body').classList.add(`theme-dark`);
+require('./style.css');
