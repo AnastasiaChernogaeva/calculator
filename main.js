@@ -4,7 +4,6 @@ let buttons = Array.from(document.querySelectorAll(".button"));
 let firstNum = '';
 let secNum = '';
 let sign = '';
-let done = false;
 
 const numButtons = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
 const actions = ['-', '+', '*', '/'];
@@ -13,7 +12,6 @@ const clearAll = () => {
     firstNum = '';
     secNum = '';
     sign = '';
-    done = false;
     display.innerText = '0'; 
 }
 
@@ -30,7 +28,6 @@ buttons.map((button) => {
             display.innerText = firstNum;
         }else {
             secNum += key;
-            done = false;
             display.innerText = secNum;
         }
         return;
@@ -65,13 +62,11 @@ buttons.map((button) => {
                     firstNum = 'Error...';
                     secNum = '';
                     sign = '';
-                    done = false;
                 } else {
                     firstNum = firstNum / secNum;
                 }
                 break;
         }
-        done = true;
         secNum = '';
         sign = '';
         display.innerText = firstNum;
